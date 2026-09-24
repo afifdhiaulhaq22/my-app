@@ -4,14 +4,15 @@ import { useRef } from "react";
 import Link from "next/link";
 
 type Product = {
+    id: number;
   name: string;
+  slug: string;
   series: string;
   category: string;
   description: string;
   image: string;
   alt: string;
   badge: string;
-  href: string;
   specifications: {
     label: string;
     value: string;
@@ -22,7 +23,9 @@ const PRODUCTS: Product[] = [
 
 
   {
-    name: "Electric Pallet Truck",
+    id: 1,
+    slug: "seris-fd50-hd-diesel",
+    name: "Seri FD50 HD Diesel",
     series: "EPT20 Ride-On",
     category: "KEI HAI",
     badge: "Warehouse Stacker",
@@ -31,7 +34,6 @@ const PRODUCTS: Product[] = [
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDZiawwm5ybXDA0S4EGFm1H_ium-6cE1GyO-taY3LCUDX3qitBB-BXD5p7TV1xl46lyA6QO5MiKWCUzHzvsznAIrTnYFM4dt3kPdy6kZDqNeXkIXYPQWfcidulBaI01qN-u2SoCy1D0svYNPdNOZbJU2f7goWSxSTrdRa9Y_mkoLJNQrDouejx8m_xj8hDlXc1uHZMK7hU0vcrompaMMAWxQivORDs9F7_CpY7qVghMknHTqKuIZdkH",
     alt: "Electric Pallet Truck Stacker KEI HAI EPT20 Ride-On",
-    href: "/unit-forklift/ept20-ride-on",
     specifications: [
       {
         label: "Kapasitas",
@@ -182,7 +184,7 @@ export default function ProductSection() {
 
                 {/* Detail Link */}
                 <Link
-                  href={product.href}
+                  href={`/pages/produk/${product.slug}`}
                   className="group flex w-full items-center justify-center gap-1.5 rounded-lg bg-surface-container-low px-4 py-2.5 text-center font-label-md text-label-md font-bold text-primary transition-colors hover:bg-secondary hover:text-on-secondary"
                 >
                   <span>Lihat Detail Spesifikasi</span>
