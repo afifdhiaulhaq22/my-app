@@ -1,13 +1,75 @@
-// app/produk/[id]/page.jsx
+// app/produk/[slug]/page.tsx
 
 import { notFound } from "next/navigation";
 import ProductGallery from "./ProductGallery";
 import FinalCTASection from "../../../components/sections/FinalCTASection";
 import ProductSection from "../../../components/sections/ProductSection";
 
+type ProductImage = {
+  src: string;
+  title: string;
+};
 
+type ProductHighlight = {
+  icon: string;
+  label: string;
+  value: string;
+};
 
-const products = [
+type SpecRow = [string, string];
+
+type Product = {
+  id: number;
+  slug: string;
+  name: string;
+  brand: string;
+  series: string;
+  engine: string;
+  capacity: string;
+  capacityLabel: string;
+  mastHeight: string;
+  mast: string;
+  warranty: string;
+  certification: string;
+  fuel: string;
+  location: string;
+  code: string;
+  description: string;
+  images: ProductImage[];
+  highlights: ProductHighlight[];
+  specifications: Record<string, SpecRow[]>;
+};
+
+type ProductDetailPageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+type AssuranceProps = {
+  icon: string;
+  text: string;
+};
+
+type SpecCardProps = {
+  label: string;
+  value: string;
+  description: string;
+};
+
+type FeatureProps = {
+  icon: string;
+  title: string;
+  description: string;
+};
+
+type SpecTableProps = {
+  category: string;
+  rows: SpecRow[];
+  index: number;
+};
+
+const products: Product[] = [
   {
     id: 1,
     slug: "seris-fd50-hd-diesel",
@@ -37,7 +99,6 @@ const products = [
         src: "https://lh3.googleusercontent.com/aida-public/AB6AXuC-XjHs9mBTGDc0ULhNed7axcn1inf1-_l302YJREbMk6m57uKoBu4mAMCRPwp-aIV_Xbjau9JCRkYFuwfimFoM8VJzys1etPzjWSmin3sc15slaTbt5FljR1aubnEgQZa7U5nsyIjPVdH5VU_eYAkT4-YuUik_GTd4NPNvuLvfXm89EWR5AqKjK6H-JmBjX7XOD9lFaa5O2DiTHMtjGphLeu1FmEGNomKK6NFw3HCwNwXbG90JmhEE",
         title: "Tampak Depan / 3/4 Studio",
       },
-     
     ],
 
     highlights: [
@@ -115,21 +176,20 @@ const products = [
   },
 ];
 
-function getProduct(slug) {
+function getProduct(slug: string): Product | undefined {
   return products.find((product) => product.slug === slug);
 }
 
-export default async function ProductDetailPage({ params }) {
+export default async function ProductDetailPage({
+  params,
+}: ProductDetailPageProps) {
   const { slug } = await params;
 
-
   const product = getProduct(slug);
-
 
   if (!product) {
     notFound();
   }
-
 
   return (
     <main className="w-full pt-[116px] bg-background min-h-screen">
@@ -268,21 +328,6 @@ export default async function ProductDetailPage({ params }) {
                       </span>
                       Konsultasi WhatsApp
                     </a>
-
-                    {/* <button
-                      type="button"
-                      onClick={() =>
-                        alert(
-                          `Mengunduh brosur ${product.name}`
-                        )
-                      }
-                      className="w-full bg-surface-container-lowest hover:bg-surface-container text-primary px-4 py-3 rounded-lg font-label-lg flex items-center justify-center gap-2"
-                    >
-                      <span className="material-symbols-outlined">
-                        download
-                      </span>
-                      Download Brosur
-                    </button> */}
                   </div>
                 </div>
 
@@ -430,17 +475,6 @@ export default async function ProductDetailPage({ params }) {
                   Tabel spesifikasi teknis lengkap {product.name}.
                 </p>
               </div>
-
-              {/* <button
-                type="button"
-                onClick={() => window.print()}
-                className="px-3.5 py-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-primary flex items-center gap-1.5 shadow-sm"
-              >
-                <span className="material-symbols-outlined text-[16px]">
-                  print
-                </span>
-                Cetak Data Sheet
-              </button> */}
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -457,18 +491,18 @@ export default async function ProductDetailPage({ params }) {
             </div>
           </div>
         </section>
+
         <ProductSection />
         <FinalCTASection />
-
       </div>
     </main>
   );
 }
 
-
-
-
-function Assurance({ icon, text }) {
+function Assurance({
+  icon,
+  text,
+}: AssuranceProps) {
   return (
     <div className="flex items-start gap-2.5">
       <span className="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">
@@ -482,8 +516,11 @@ function Assurance({ icon, text }) {
   );
 }
 
-
-function SpecCard({ label, value, description }) {
+function SpecCard({
+  label,
+  value,
+  description,
+}: SpecCardProps) {
   return (
     <div className="bg-surface-container-lowest p-4 rounded-lg shadow-sm">
       <span className="font-label-technical text-on-surface-variant uppercase tracking-wider">
@@ -503,8 +540,11 @@ function SpecCard({ label, value, description }) {
   );
 }
 
-
-function Feature({ icon, title, description }) {
+function Feature({
+  icon,
+  title,
+  description,
+}: FeatureProps) {
   return (
     <div className="flex flex-col items-start gap-3 bg-surface-container-lowest p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow">
       <div className="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
@@ -524,8 +564,11 @@ function Feature({ icon, title, description }) {
   );
 }
 
-
-function SpecTable({ category, rows, index }) {
+function SpecTable({
+  category,
+  rows,
+  index,
+}: SpecTableProps) {
   return (
     <div className="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
 
