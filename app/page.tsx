@@ -1,4 +1,6 @@
 import Hero from "./components/sections/Hero";
+import type { Metadata } from "next";
+
 import ClientTrustSection from "./components/sections/ClientTrustSection";
 import ServicesSection from "./components/sections/ServicesSection";
 import ProductSection from "./components/sections/ProductSection";
@@ -7,6 +9,10 @@ import WhyChooseUsSection from "./components/sections/WhyChooseUsSection";
 import ArticlesSection from "./components/sections/ArticlesSection";
 import FinalCTASection from "./components/sections/FinalCTASection";
 
+export const metadata: Metadata = {
+  title: "Beranda",
+  description: "Halaman Beranda",
+};
 
 export default function HomePage() {
   return (
