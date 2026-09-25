@@ -30,7 +30,7 @@ const FOOTER_DATA = {
         },
         {
           label: "Suku Cadang Original",
-          href: "#",
+          href: "/pages/suku-cadang",
         },
         {
           label: "Baterai",

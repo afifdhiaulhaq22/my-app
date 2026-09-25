@@ -45,11 +45,11 @@ const NAVBAR_DATA = {
         },
         {
           label: "Suku Cadang",
-          href: "#",
+          href: "/pages/suku-cadang",
         },
         {
           label: "Baterai & Charger",
-          href: "#",
+          href: "/pages/batrai",
         },
       ],
     },
@@ -73,7 +73,7 @@ const NAVBAR_DATA = {
     },
     {
       label: "Artikel",
-      href: "#",
+      href: "/pages/artikel",
     },
   ] satisfies NavItem[],
 
