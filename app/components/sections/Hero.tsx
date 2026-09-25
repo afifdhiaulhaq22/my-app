@@ -1,5 +1,5 @@
 import Link from "next/link";
-import HeroCarousel from "../HeroCarousel";
+import HeroCarousel from "./HeroCarousel";
 
 export default function Hero() {
   return (

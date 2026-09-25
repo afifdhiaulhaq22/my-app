@@ -48,7 +48,7 @@ const FOOTER_DATA = {
         },
         {
           label: "Sewa Unit Forklift Harian & Tahunan",
-          href: "#",
+          href: "/pages/sewa-forklift",
         }
       ],
     },
@@ -58,7 +58,7 @@ const FOOTER_DATA = {
       links: [
         {
           label: "Tentang Kami",
-          href: "#",
+          href: "/pages/tentang-kami",
         },
         {
           label: "Artikel",
@@ -66,7 +66,7 @@ const FOOTER_DATA = {
         },
         {
           label: "Kontak Kami",
-          href: "#",
+          href: "/pages/hubungi-kami",
         },
       ],
     },

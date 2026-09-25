@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ProductCatalog from "../../components/produk/ProductCatalog";
+import ProductCatalog from "./ProductCatalog";
 
 export default function UnitForkliftPage() {
   return (

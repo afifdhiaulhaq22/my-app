@@ -63,13 +63,13 @@ const NAVBAR_DATA = {
         },
         {
           label: "Sewa Unit Forklift",
-          href: "#",
+          href: "/pages/sewa-forklift",
         },
       ],
     },
     {
       label: "Tentang Kami",
-      href: "#",
+      href: "/pages/tentang-kami",
     },
     {
       label: "Artikel",
