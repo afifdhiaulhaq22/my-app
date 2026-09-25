@@ -223,7 +223,7 @@ export default async function ProductDetailPage({
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-lowest text-[#047857] font-label-technical uppercase tracking-wider shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#047857] animate-pulse" />
-                READY STOCK - {product.location}
+                READY STOCK
               </span>
 
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container-lowest text-on-primary-fixed-variant font-label-technical uppercase tracking-wider shadow-sm">

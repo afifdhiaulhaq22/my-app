@@ -1,6 +1,5 @@
 import Link from "next/link";
 import ProductCatalog from "../../components/produk/ProductCatalog";
-import FleetHighlight from "../../components/produk/ProductCatalog";
 
 export default function UnitForkliftPage() {
   return (
@@ -75,7 +74,7 @@ export default function UnitForkliftPage() {
               </div>
 
               {/* Armada Counter */}
-              <div className="flex items-center gap-4 self-start rounded-xl bg-surface-container-low px-5 py-3.5 lg:self-auto">
+              {/* <div className="flex items-center gap-4 self-start rounded-xl bg-surface-container-low px-5 py-3.5 lg:self-auto">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-on-primary">
                   <span className="material-symbols-outlined text-[22px]">
                     forklift
@@ -91,7 +90,7 @@ export default function UnitForkliftPage() {
                     Unit Tersedia Siap Kirim
                   </span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
@@ -99,7 +98,6 @@ export default function UnitForkliftPage() {
         <ProductCatalog />
 
         {/* Fleet Highlight */}
-        <FleetHighlight />
       </div>
     </main>
   );

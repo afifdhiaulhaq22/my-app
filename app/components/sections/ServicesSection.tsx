@@ -80,7 +80,7 @@ const SERVICES: Service[] = [
     title: "Servis dan Lubrikasi",
     description:
       "Layanan perawatan, servis, dan lubrikasi untuk menjaga performa forklift.",
-    href: "/servis-lubrikasi",
+    href: "/pages/servis-lubrikasi",
     icon: (
       <svg
         className="h-7 w-7"

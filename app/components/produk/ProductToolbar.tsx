@@ -43,7 +43,7 @@ export default function ProductToolbar({
         </div>
 
         {/* Sorting */}
-        <div className="w-full md:w-auto flex items-center justify-between md:justify-end gap-3 font-label-md text-label-md">
+        {/* <div className="w-full md:w-auto flex items-center justify-between md:justify-end gap-3 font-label-md text-label-md">
           <span className="text-on-surface-variant hidden sm:inline">
             Urutkan:
           </span>
@@ -67,7 +67,7 @@ export default function ProductToolbar({
               </button>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   )

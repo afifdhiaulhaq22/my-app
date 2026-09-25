@@ -59,7 +59,7 @@ const NAVBAR_DATA = {
       children: [
         {
           label: "Servis dan Lubrikasi",
-          href: "#",
+          href: "/pages/servis-lubrikasi",
         },
         {
           label: "Sewa Unit Forklift",

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 
 type Product = {
-    id: number;
+  id: number;
   name: string;
   slug: string;
   series: string;

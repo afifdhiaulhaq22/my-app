@@ -12,7 +12,7 @@ type FooterColumn = {
 
 const FOOTER_DATA = {
   brand: {
-    logo: "https://lh3.googleusercontent.com/aida/AEtjO1X7Vk6NDRYMHsBNkNyNJEHlcsgM_j2h9cXRP7AwJejCvZj5B8bH8DSCrwVnQM0Tv8ihUJcn0_2sc8HSaQ1lD5Orl4h6Dl7keZ7By0A2To1wS6N12Rp77Nl-k_w47QjQmvRXJywB0qItf_9ObKCnu1-JiS0v071iYulm8QtRXwqTF7LD7HBEx0viPun2onG6krU0NvUmpZMpsbJM-aPSSIj8m6LSE_ZusJYN7_IK9RYrE2Z4HPoDPrARxjA",
+    logo: "#",
     logoAlt: "PT. KEI HAI Corporate Logo",
     name: "PT. KEI HAI",
     description:
@@ -25,23 +25,15 @@ const FOOTER_DATA = {
       title: "Produk",
       links: [
         {
-          label: "Unit Forklift (Diesel, Electric, LPG)",
-          href: "#",
+          label: "Unit Forklift",
+          href: "/pages/produk",
         },
         {
           label: "Suku Cadang Original",
           href: "#",
         },
         {
-          label: "Baterai & Industrial Charger",
-          href: "#",
-        },
-        {
-          label: "Electric Pallet Truck",
-          href: "#",
-        },
-        {
-          label: "Attachment Forklift Spesialis",
+          label: "Baterai",
           href: "#",
         },
       ],
@@ -52,24 +44,12 @@ const FOOTER_DATA = {
       links: [
         {
           label: "Servis dan Lubrikasi Berkala",
-          href: "#",
+          href: "/pages/servis-lubrikasi",
         },
         {
           label: "Sewa Unit Forklift Harian & Tahunan",
           href: "#",
-        },
-        {
-          label: "Maintenance Kontrak Industri",
-          href: "#",
-        },
-        {
-          label: "Inspeksi Rutin & Uji Kelayakan",
-          href: "#",
-        },
-        {
-          label: "Overhaul Engine & Transmisi",
-          href: "#",
-        },
+        }
       ],
     },
 
@@ -81,7 +61,7 @@ const FOOTER_DATA = {
           href: "#",
         },
         {
-          label: "Artikel & Berita Industri",
+          label: "Artikel",
           href: "#",
         },
         {
@@ -150,11 +130,11 @@ function BrandSection() {
         href="/"
         className="flex items-center gap-space-sm"
       >
-        <img
+        {/* <img
           src={brand.logo}
           alt={brand.logoAlt}
           className="h-9 w-auto object-contain"
-        />
+        /> */}
 
         <span className="font-headline-sm text-headline-sm text-on-primary font-bold">
           {brand.name}

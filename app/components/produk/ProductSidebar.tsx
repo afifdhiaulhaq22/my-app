@@ -7,13 +7,13 @@ type ProductSidebarProps = {
 }
 
 const categories = [
-  ["all", "grid_view", "Semua Forklift", "36"],
-  ["diesel", "local_gas_station", "Forklift Diesel", "12"],
-  ["electric", "bolt", "Forklift Electric", "10"],
-  ["lpg", "propane_tank", "Forklift LPG / Dual Fuel", "6"],
-  ["reachtruck", "height", "Forklift Reach Truck", "4"],
-  ["pallettruck", "pallet", "Pallet Truck", "8"],
-  ["stacker", "layers", "Stacker", "6"],
+  ["all", "grid_view", "Semua Forklift"],
+  ["diesel", "local_gas_station", "Forklift Diesel"],
+  ["electric", "bolt", "Forklift Electric"],
+  ["lpg", "propane_tank", "Forklift LPG / Dual Fuel"],
+  ["reachtruck", "height", "Forklift Reach Truck"],
+  ["pallettruck", "pallet", "Pallet Truck"],
+  ["stacker", "layers", "Stacker"],
 ]
 
 export default function ProductSidebar({
@@ -43,7 +43,7 @@ export default function ProductSidebar({
         </div>
 
         <div className="space-y-1">
-          {categories.map(([value, icon, label, count]) => {
+          {categories.map(([value, icon, label]) => {
             const active = category === value
 
             return (
@@ -64,7 +64,7 @@ export default function ProductSidebar({
                   <span>{label}</span>
                 </span>
 
-                <span
+                {/* <span
                   className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
                     active
                       ? "bg-primary text-on-primary"
@@ -72,7 +72,7 @@ export default function ProductSidebar({
                   }`}
                 >
                   {count}
-                </span>
+                </span> */}
               </button>
             )
           })}
@@ -80,7 +80,7 @@ export default function ProductSidebar({
       </div>
 
       {/* Technical Filters */}
-      <div className="bg-surface-container-lowest rounded-xl p-5 shadow-sm space-y-5">
+      {/* <div className="bg-surface-container-lowest rounded-xl p-5 shadow-sm space-y-5">
         <FilterGroup
           icon="weight"
           title="Kapasitas Beban"
@@ -110,7 +110,7 @@ export default function ProductSidebar({
             "Solid Rubber (Bantat Anti Bocor)",
           ]}
         />
-      </div>
+      </div> */}
 
       {/* Consultation */}
       <div className="bg-primary text-on-primary rounded-xl p-5 shadow-md">
@@ -143,7 +143,7 @@ export default function ProductSidebar({
               WhatsApp Konsultan
             </a>
 
-            <a
+            {/* <a
               href="tel:02189835500"
               className="inline-flex items-center justify-center gap-2 w-full py-2 bg-surface-container-lowest/10 text-on-primary rounded-lg font-label-md text-label-md hover:bg-surface-container-lowest/20 transition-colors"
             >
@@ -151,7 +151,7 @@ export default function ProductSidebar({
                 call
               </span>
               (021) 8983-5500
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

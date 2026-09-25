@@ -27,7 +27,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     >
       {/* Image */}
       <div className="relative bg-surface-container-low p-4 h-48 flex items-center justify-center overflow-hidden">
-        {product.badge && (
+        {/* {product.badge && (
           <span
             className={`absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider shadow-sm ${
               product.badgeClass ||
@@ -36,7 +36,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           >
             {product.badge}
           </span>
-        )}
+        )} */}
 
         <img
           src={product.image}
@@ -44,9 +44,9 @@ export default function ProductCard({ product }: ProductCardProps) {
           className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
         />
 
-        <span className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-surface-container-lowest/85 backdrop-blur-sm rounded text-[10px] font-mono text-primary">
+        {/* <span className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-surface-container-lowest/85 backdrop-blur-sm rounded text-[10px] font-mono text-primary">
           {product.location}
-        </span>
+        </span> */}
       </div>
 
       {/* Content */}

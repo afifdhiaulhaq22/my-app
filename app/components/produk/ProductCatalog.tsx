@@ -96,18 +96,18 @@ export default function ProductCatalog() {
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3 text-body-sm text-on-surface-variant">
+                {/* <div className="flex items-center gap-3 text-body-sm text-on-surface-variant">
                   <span className="hidden sm:inline">
                     Lokasi Armada: MM2100 Cikarang & Surabaya
                   </span>
 
                   <span className="inline-block w-2 h-2 rounded-full bg-secondary" />
-                </div>
+                </div> */}
               </div>
 
               {/* Grid */}
               {filteredProducts.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                   {filteredProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
