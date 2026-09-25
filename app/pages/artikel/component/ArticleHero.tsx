@@ -53,10 +53,6 @@ export default function ArticleHero({ article }: ArticleHeroProps) {
 
               <div className="pt-6 mt-6 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-bold">
-                    KH
-                  </div>
-
                   <div>
                     <span className="block font-bold text-on-surface">
                       Tim Engineering & K3

@@ -1,13 +1,19 @@
-import BreadcrumbBar from "./BreadcrumbBar";
-import HeroSection from "./HeroSection";
-import RentalOverviewSection from "./RentalOverviewSection";
-import ForkliftCatalogSection from "./ForkliftCatalogSection";
-import OperationalNeedsSection from "./OperationalNeedsSection";
-import BenefitsSection from "./BenefitsSection";
-import RentalProcessSection from "./RentalProcessSection";
-import FaqSection from "./FaqSection";
-import QuotationSection from "./QuotationSection";
-import CoverageSection from "./CoverageSection";
+import BreadcrumbBar from "./component/BreadcrumbBar";
+import HeroSection from "./component/HeroSection";
+import RentalOverviewSection from "./component/RentalOverviewSection";
+import ForkliftCatalogSection from "./component/ForkliftCatalogSection";
+import OperationalNeedsSection from "./component/OperationalNeedsSection";
+import BenefitsSection from "./component/BenefitsSection";
+import RentalProcessSection from "./component/RentalProcessSection";
+import FaqSection from "./component/FaqSection";
+import QuotationSection from "./component/QuotationSection";
+import CoverageSection from "./component/CoverageSection";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sewa Unit Foklift | KEI HAI",
+  description: "Halaman Sewa Unit Foklift",
+};
 
 
 export default function SewaForkliftPage() {
@@ -22,7 +28,7 @@ export default function SewaForkliftPage() {
       <RentalProcessSection />
       <CoverageSection />
       <FaqSection />
-      <QuotationSection />
+      {/* <QuotationSection /> */}
     </main>
   );
 }

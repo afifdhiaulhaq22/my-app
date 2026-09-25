@@ -24,13 +24,13 @@ export default function ContactForm() {
     <div className="bg-surface-container-lowest rounded-2xl p-6 sm:p-8 shadow-md">
 
       <div className="space-y-2 mb-6">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-primary text-on-primary font-label-technical uppercase tracking-wider">
+        {/* <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-primary text-on-primary font-label-technical uppercase tracking-wider">
           <span className="material-symbols-outlined text-[12px]">
             request_quote
           </span>
 
           B2B Procurement Request
-        </div>
+        </div> */}
 
         <h2 className="font-headline-md text-primary font-bold">
           Kirim Pesan & Permohonan Penawaran

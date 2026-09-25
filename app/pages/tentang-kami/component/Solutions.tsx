@@ -6,7 +6,7 @@ const solutions = [
       "Penyediaan armada forklift diesel, elektrik (counterbalance & reach truck), dan dual-fuel LPG untuk kebutuhan outdoor maupun indoor gudang modern.",
     image:
       "https://lh3.googleusercontent.com/aida/AEtjO1WcR5C_ebxiHTqXybTaGWW2d3NUwtVoy_D2ldzVsamsgSBj3jkUU1l1jDMs96cmcJGiux40JfODyCvm6va0SeSv6iy6iaDVgiISTkmbE6FEi11hK5qFu59HSAw_F13TtVOA2gdMKQYAyvmh1C2SewufYTzHiE7R8tj66IYuHAogzC4ktHZSWHuPklbDga4pCGsfLoE-1jic8VeAGzaFQufmIej88yK-QIwbYOzD-ImhMvlve8aT1Wxp_A",
-    href: "/unit-forklift",
+    href: "/pages/produk",
     link: "Lihat Katalog Forklift",
     objectFit: "object-contain",
   },
@@ -17,7 +17,7 @@ const solutions = [
       "Ketersediaan suku cadang genuine dan OEM (filter oli, komponen hidrolik, sistem rem, mast chain, roda ban solid/pneumatic) untuk keandalan unit.",
     image:
       "https://lh3.googleusercontent.com/aida/AEtjO1UcwWRCqa0g-iAjphTb0tQN2gqtth-laWJSbqyztdb83kp9Tq6-QnNfrihnjz2ptN20KIbqRpJDfXM95ubPN5Tq84YzaTLaALTsdwbT8n4R9krf8C9sP74fDZn242xToji5-vhwB-DvxzBRYMkuVBRnm2p2nO6L0mwsjtRPz6o2stxIoLT_vOsbDgClX0YQDuMhFM2TQxi_DY_l_5-_ltu0GtI-XJZLyD2Jaeu2NQd78WRZwUkjvQBdYg",
-    href: "/suku-cadang",
+    href: "/pages/suku-cadang",
     link: "Lihat Katalog Suku Cadang",
     objectFit: "object-cover",
   },
@@ -28,7 +28,7 @@ const solutions = [
       "Solusi traksi baterai lead-acid deep-cycle dan lithium LiFePO4 boks standar DIN/BS serta stasiun pengisian daya (smart charger) industri.",
     image:
       "https://lh3.googleusercontent.com/aida/AEtjO1XtCcDyZDGJoWEypb_HICE5JVU1eDRdc0nrz1_sg-SDjx4WcmYRZS37NCjKHFi0aPytN0aPoQ7A2O3hEVv3XbXPK-VyaLQWUQwcjlk_iIgQdCBeq628MVTKu3TFdE5s1rUHp6eG7YDYLEkUTrpcaa6ch4pa45eVJmxebH4cp-nYHR55pwWfQo821w-UJFiXvRoH1xeNwO9qP-s1GuCutfLXmJlM_yI_DHkDyQNe9jtOh_2BGEO2KH7tag",
-    href: "/baterai",
+    href: "/pages/baterai",
     link: "Lihat Katalog Baterai",
     objectFit: "object-contain",
   },
@@ -39,7 +39,7 @@ const solutions = [
       "Layanan perawatan berkala, lubrikasi titik krusial, general inspection, dan penanganan teknis on-call oleh tim spesialis berpengalaman.",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuB0KEVhjAdxtxwmZCTedmqZ5Fv05tKdmVqjhqWLX7-PazZHRNUiGisApm1eiQ_9N9QS0Wwsn4aNhNoGaVPUudUdN2-qWt5xzZ3Ok9Cd4b-jGGHF-hkW4IrXqgJ2y2BDM8DWQB9JPlust-lZxoxQBGM9v4ibanVuLQSGx7Z-vqULiIM6A0uTq3O7lXVnPYOxVfIxXm2ZXKrOD6RSaqUKnqYg4WCAzOT1RNyFEWclP5BO2bxNVAazmtFx",
-    href: "/servis-dan-lubrikasi",
+    href: "/pages/servis-lubrikasi",
     link: "Lihat Layanan Servis",
     objectFit: "object-cover",
   },
@@ -135,7 +135,7 @@ export default function Solutions() {
                 </p>
 
                 <a
-                  href="/sewa-unit"
+                  href="/pages/sewa-forklift"
                   className="inline-flex items-center gap-1.5 mt-2 font-title-md text-title-md text-primary hover:text-secondary font-semibold transition-colors"
                 >
                   <span>Lihat Solusi Sewa</span>

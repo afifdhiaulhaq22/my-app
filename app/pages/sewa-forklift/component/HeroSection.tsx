@@ -6,12 +6,12 @@ export default function HeroSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <div className="inline-flex items-center gap-2 self-start px-3 py-1 bg-surface-container-high rounded text-on-surface-variant text-xs uppercase tracking-widest">
+            {/* <div className="inline-flex items-center gap-2 self-start px-3 py-1 bg-surface-container-high rounded text-on-surface-variant text-xs uppercase tracking-widest">
               <span className="material-symbols-outlined text-[15px] text-secondary">
                 precision_manufacturing
               </span>
               MATERIAL HANDLING RENTAL SERVICES
-            </div>
+            </div> */}
 
             <h1 className="text-5xl lg:text-7xl font-bold text-primary leading-tight">
               Sewa Forklift
@@ -24,7 +24,7 @@ export default function HeroSection() {
 
             <div className="flex flex-wrap items-center gap-4">
               <a
-                href="#quotation-form"
+                href="/pages/hubungi-kami"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-secondary hover:bg-secondary-container text-on-secondary rounded-lg shadow-sm transition-all"
               >
                 <span>Hubungi Kami</span>

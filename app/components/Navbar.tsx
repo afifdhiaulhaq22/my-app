@@ -49,7 +49,7 @@ const NAVBAR_DATA = {
         },
         {
           label: "Baterai & Charger",
-          href: "/pages/batrai",
+          href: "/pages/baterai",
         },
       ],
     },

@@ -24,9 +24,9 @@ export default function ArticleSearch({
   sort,
 }: ArticleSearchProps) {
   return (
-    <section className="w-full bg-surface-container-lowest py-12 lg:py-16">
+    <section className="w-full bg-surface-container py-12 lg:py-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-6">
-        <div className="flex flex-col items-start gap-3 max-w-3xl">
+        {/* <div className="flex flex-col items-start gap-3 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-fixed text-primary font-label-technical text-label-technical uppercase tracking-wider">
             <span className="material-symbols-outlined text-[15px]">
               menu_book
@@ -43,7 +43,7 @@ export default function ArticleSearch({
             praktis seputar armada forklift, pemeliharaan fluid & filter,
             efisiensi traksi baterai, serta keselamatan kerja (K3).
           </p>
-        </div>
+        </div> */}
 
         <form
           className="relative flex items-center w-full max-w-3xl mt-4 bg-white rounded-xl shadow-sm p-1.5"
@@ -85,7 +85,7 @@ export default function ArticleSearch({
         </form>
 
         <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-2">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+          {/* <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
             {categories.map((item) => {
               const active = category === item.value;
 
@@ -104,7 +104,7 @@ export default function ArticleSearch({
                 </button>
               );
             })}
-          </div>
+          </div> */}
 
           <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0">
             <span className="text-xs text-on-surface-variant uppercase tracking-wider">
@@ -112,7 +112,7 @@ export default function ArticleSearch({
               <strong className="text-primary">{count} Artikel</strong>
             </span>
 
-            <select
+            {/* <select
               value={sort}
               onChange={(e) => onSortChange(e.target.value)}
               className="bg-white text-on-surface px-3 py-2 rounded-lg shadow-sm focus:outline-none"
@@ -120,7 +120,7 @@ export default function ArticleSearch({
               <option value="terbaru">Urutkan: Terbaru</option>
               <option value="populer">Urutkan: Terpopuler</option>
               <option value="rekomendasi">Urutkan: Panduan K3</option>
-            </select>
+            </select> */}
           </div>
         </div>
       </div>

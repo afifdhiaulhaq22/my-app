@@ -86,34 +86,8 @@ export default function ArticleCatalog() {
   };
 
   return (
-    <main className="w-full pt-[120px] bg-surface">
+    <main className="w-full  bg-surface">
       <div className="flex flex-col w-full">
-        {/* Breadcrumb */}
-        <section className="w-full bg-surface-container-low py-4 shadow-sm">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <nav
-              aria-label="Breadcrumb"
-              className="flex items-center gap-2 text-on-surface-variant"
-            >
-              <a href="/" className="hover:text-primary">
-                Beranda
-              </a>
-
-              <span className="material-symbols-outlined text-[16px]">
-                chevron_right
-              </span>
-
-              <span className="font-semibold text-on-surface">
-                Artikel & Wawasan Industri
-              </span>
-            </nav>
-
-            <div className="flex items-center gap-2 text-on-surface-variant text-xs uppercase tracking-wider">
-              <span className="inline-block w-2 h-2 rounded-full bg-emerald-600" />
-              Pusat Informasi Teknis K3 & Logistik
-            </div>
-          </div>
-        </section>
 
         <ArticleSearch
           query={query}
@@ -126,11 +100,11 @@ export default function ArticleCatalog() {
           onSortChange={handleSortChange}
         />
 
-        <ArticleHero article={featuredArticle} />
+        {/* <ArticleHero article={featuredArticle} /> */}
 
         <section className="w-full bg-surface py-10 lg:py-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-8">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            {/* <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
                 <span className="text-xs uppercase tracking-widest text-secondary font-bold">
                   Wawasan Mendalam
@@ -146,7 +120,7 @@ export default function ArticleCatalog() {
                 bersertifikasi dan spesialis penanganan beban industri PT.
                 KEI HAI.
               </p>
-            </div>
+            </div> */}
 
             <ArticleGrid articles={paginatedArticles} />
 

@@ -1,29 +1,30 @@
+import Link from "next/link";
+
 export default function BreadcrumbBar() {
   return (
     <section className="w-full bg-surface-container-lowest">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex flex-wrap items-center justify-between gap-4">
         <nav
           aria-label="Breadcrumb"
-          className="flex items-center gap-2 text-sm text-on-surface-variant"
+          className="mb-4 flex items-center gap-2 font-label-md text-label-md text-on-surface-variant"
         >
-          <a href="/" className="hover:text-primary transition-colors">
-            Beranda
-          </a>
+          <Link
+            href="/"
+            className="flex items-center gap-1 transition-colors hover:text-primary"
+          >
+            <span className="material-symbols-outlined text-[16px]">
+              home
+            </span>
 
-          <span className="material-symbols-outlined text-[14px]">
+            <span>Beranda</span>
+          </Link>
+
+          <span className="material-symbols-outlined text-[14px] text-outline">
             chevron_right
           </span>
 
-          <a href="/layanan" className="hover:text-primary transition-colors">
-            Layanan
-          </a>
-
-          <span className="material-symbols-outlined text-[14px]">
-            chevron_right
-          </span>
-
-          <span className="text-primary font-semibold">
-            Sewa Forklift
+          <span className="font-bold text-primary">
+            Sewa Unit
           </span>
         </nav>
 

@@ -151,12 +151,12 @@ function ForkliftCard({
           ))}
         </div>
 
-        <a
+        {/* <a
           href="#quotation-form"
           className="w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-semibold text-center transition-colors"
         >
           Tanyakan Ketersediaan
-        </a>
+        </a> */}
       </div>
     </article>
   );

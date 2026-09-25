@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import ArticleCatalog from "./component/ArticleCatalog";
+import ArticleHeader from "./component/ArticleHeader";
 
 export const metadata: Metadata = {
   title: "Wawasan & Artikel Industri | PT. KEI HAI",
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function ArtikelPage() {
-  return <ArticleCatalog />;
+  return (
+    <main className="w-full pt-[116px] bg-background min-h-screen">
+      <ArticleHeader />
+      <ArticleCatalog />;
+    </main>
+  )
 }

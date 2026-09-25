@@ -41,33 +41,6 @@ export default function ProductToolbar({
             </button>
           )}
         </div>
-
-        {/* Sorting */}
-        {/* <div className="w-full md:w-auto flex items-center justify-between md:justify-end gap-3 font-label-md text-label-md">
-          <span className="text-on-surface-variant hidden sm:inline">
-            Urutkan:
-          </span>
-
-          <div className="flex items-center gap-2">
-            {[
-              ["rekomendasi", "Rekomendasi"],
-              ["low", "Kapasitas Terendah"],
-              ["high", "Kapasitas Tertinggi"],
-            ].map(([value, label]) => (
-              <button
-                key={value}
-                onClick={() => setSort(value)}
-                className={`px-3 py-1.5 rounded transition-all shadow-sm ${
-                  sort === value
-                    ? "bg-primary text-on-primary font-semibold"
-                    : "bg-surface-container-lowest text-on-surface-variant hover:text-primary"
-                }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </div> */}
       </div>
     </section>
   )

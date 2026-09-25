@@ -1,5 +1,4 @@
 import Hero from "./components/sections/Hero";
-import type { Metadata } from "next";
 
 import ClientTrustSection from "./components/sections/ClientTrustSection";
 import ServicesSection from "./components/sections/ServicesSection";
@@ -8,9 +7,11 @@ import SolutionsSection from "./components/sections/SolutionsSection";
 import WhyChooseUsSection from "./components/sections/WhyChooseUsSection";
 import ArticlesSection from "./components/sections/ArticlesSection";
 import FinalCTASection from "./components/sections/FinalCTASection";
+import BatterySection from "./components/sections/BatterySection";
 
+import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Beranda",
+  title: "Beranda | KEI HAI",
   description: "Halaman Beranda",
 };
 
@@ -22,6 +23,7 @@ export default function HomePage() {
       <ClientTrustSection />
       <ServicesSection />
       <ProductSection />
+      <BatterySection />
       <SolutionsSection />
       <WhyChooseUsSection />
       <ArticlesSection />

@@ -34,7 +34,7 @@ const FOOTER_DATA = {
         },
         {
           label: "Baterai",
-          href: "#",
+          href: "/pages/baterai",
         },
       ],
     },
@@ -62,7 +62,7 @@ const FOOTER_DATA = {
         },
         {
           label: "Artikel",
-          href: "#",
+          href: "/pages/artikel",
         },
         {
           label: "Kontak Kami",

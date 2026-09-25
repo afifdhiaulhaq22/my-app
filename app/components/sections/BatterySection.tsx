@@ -20,42 +20,40 @@ type Product = {
 };
 
 const PRODUCTS: Product[] = [
-
-
   {
     id: 1,
-    slug: "seris-fd50-hd-diesel",
-    name: "Seri FD50 HD Diesel",
-    series: "EPT20 Ride-On",
+    slug: "traction-battery-48v-500ah",
+    name: "Traction Battery 48V 500Ah",
+    series: "48V Series",
     category: "KEI HAI",
-    badge: "Warehouse Stacker",
+    badge: "Industrial Battery",
     description:
-      "Unit stacker elektrik lincah dan ergonomis untuk transfer palet dan penataan rak pergudangan intensif.",
-    image: 
+      "Baterai traction berkapasitas tinggi untuk mendukung operasional forklift elektrik dan kendaraan material handling secara optimal.",
+    image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDZiawwm5ybXDA0S4EGFm1H_ium-6cE1GyO-taY3LCUDX3qitBB-BXD5p7TV1xl46lyA6QO5MiKWCUzHzvsznAIrTnYFM4dt3kPdy6kZDqNeXkIXYPQWfcidulBaI01qN-u2SoCy1D0svYNPdNOZbJU2f7goWSxSTrdRa9Y_mkoLJNQrDouejx8m_xj8hDlXc1uHZMK7hU0vcrompaMMAWxQivORDs9F7_CpY7qVghMknHTqKuIZdkH",
-    alt: "Electric Pallet Truck Stacker KEI HAI EPT20 Ride-On",
+    alt: "Traction Battery 48V 500Ah untuk forklift elektrik",
     specifications: [
       {
+        label: "Tegangan",
+        value: "48 Volt",
+      },
+      {
         label: "Kapasitas",
-        value: "2.0 Ton",
+        value: "500 Ah",
       },
       {
-        label: "Jenis Unit",
-        value: "Electric Walkie",
+        label: "Jenis",
+        value: "Lead Acid",
       },
       {
-        label: "Tinggi Angkat",
-        value: "3.6 Meter",
-      },
-      {
-        label: "Radius Putar",
-        value: "1.45 Meter",
+        label: "Aplikasi",
+        value: "Forklift Electric",
       },
     ],
   },
 ];
 
-export default function ProductSection() {
+export default function BatterySection() {
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const scrollCarousel = (direction: "prev" | "next") => {
@@ -80,12 +78,12 @@ export default function ProductSection() {
             </span>
 
             <h2 className="mt-1 font-headline-lg text-headline-lg font-bold tracking-tight text-primary">
-              Produk Unggulan Forklift
+              Produk Baterai Industri
             </h2>
 
             <p className="mt-2 max-w-2xl font-body-md text-body-md text-on-surface-variant">
-              Temukan pilihan unit forklift yang sesuai dengan kebutuhan
-              operasional dan aplikasi industri Anda.
+              Temukan pilihan baterai berkualitas untuk mendukung kebutuhan
+              forklift elektrik dan berbagai aplikasi material handling Anda.
             </p>
           </div>
 
@@ -93,7 +91,7 @@ export default function ProductSection() {
           <div className="mt-4 flex items-center gap-2 md:mt-0">
             <button
               type="button"
-              aria-label="Slide sebelumnya"
+              aria-label="Produk baterai sebelumnya"
               onClick={() => scrollCarousel("prev")}
               className="flex h-11 w-11 items-center justify-center rounded-lg bg-surface-container-lowest text-primary shadow-sm transition-colors hover:bg-primary hover:text-on-primary"
             >
@@ -104,7 +102,7 @@ export default function ProductSection() {
 
             <button
               type="button"
-              aria-label="Slide selanjutnya"
+              aria-label="Produk baterai selanjutnya"
               onClick={() => scrollCarousel("next")}
               className="flex h-11 w-11 items-center justify-center rounded-lg bg-surface-container-lowest text-primary shadow-sm transition-colors hover:bg-primary hover:text-on-primary"
             >
@@ -122,7 +120,7 @@ export default function ProductSection() {
         >
           {PRODUCTS.map((product) => (
             <article
-              key={product.series}
+              key={product.id}
               className="flex min-w-[320px] max-w-[320px] shrink-0 flex-col overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm transition-shadow hover:shadow-md sm:min-w-[360px] sm:max-w-[360px]"
             >
               {/* Product Image */}
@@ -187,7 +185,7 @@ export default function ProductSection() {
                   href={`/pages/produk/${product.slug}`}
                   className="group flex w-full items-center justify-center gap-1.5 rounded-lg bg-surface-container-low px-4 py-2.5 text-center font-label-md text-label-md font-bold text-primary transition-colors hover:bg-secondary hover:text-on-secondary"
                 >
-                  <span>Lihat Detail Spesifikasi</span>
+                  <span>Lihat Detail Baterai</span>
 
                   <span className="material-symbols-outlined text-[16px] text-secondary transition-colors group-hover:text-on-secondary">
                     arrow_forward

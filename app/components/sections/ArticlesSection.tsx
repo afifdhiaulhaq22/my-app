@@ -151,7 +151,7 @@ export default function ArticlesSection() {
           {/* All Articles */}
           <div className="mt-4 md:mt-0">
             <Link
-              href="/artikel"
+              href="/pages/artikel"
               className="inline-flex items-center gap-1 font-label-md text-label-md font-bold text-primary transition-colors hover:text-secondary"
             >
               <span>Lihat Semua Artikel</span>

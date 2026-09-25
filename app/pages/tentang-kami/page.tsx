@@ -1,11 +1,16 @@
-import AboutCompany from "./AboutCompany";
-import Solutions from "./Solutions";
-import WhyChooseUs from "./WhyChooseUs";
-import CompanyStats from "./CompanyStats";
-import CompanyValues from "./CompanyValues";
-import Industries from "./Industries";
-import PageHeader from "./PageHeader";
-// import CallToAction from "./CallToAction";
+import AboutCompany from "./component/AboutCompany";
+import Solutions from "./component/Solutions";
+import WhyChooseUs from "./component/WhyChooseUs";
+import CompanyStats from "./component/CompanyStats";
+import CompanyValues from "./component/CompanyValues";
+import Industries from "./component/Industries";
+import PageHeader from "./component/PageHeader";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tentang Kami | KEI HAI",
+  description: "Halaman Tentang Kami",
+};
 
 export default function TentangKamiPage() {
   return (
@@ -17,7 +22,6 @@ export default function TentangKamiPage() {
       <CompanyStats />
       <CompanyValues />
       <Industries />
-      {/* <CallToAction /> */}
     </main>
   );
 }
