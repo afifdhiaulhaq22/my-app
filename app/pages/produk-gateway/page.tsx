@@ -18,7 +18,7 @@ const productCategories = [
     meta: "120+ Unit Ready",
   },
   {
-    slug: "sparepart",
+    slug: "suku-cadang",
     title: "Sparepart",
     label: "SPAREPART",
     icon: "settings",
@@ -34,7 +34,7 @@ const productCategories = [
     meta: "Garansi Presisi",
   },
   {
-    slug: "battery",
+    slug: "baterai",
     title: "Battery",
     label: "BATTERY",
     icon: "battery_charging_full",
@@ -61,28 +61,32 @@ export default function ProdukPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12 py-3.5 flex flex-wrap items-center justify-between gap-4">
             <nav
               aria-label="Breadcrumb"
-              className="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant"
+              className="mb-4 flex items-center gap-2 font-label-md text-label-md text-on-surface-variant"
             >
               <Link
                 href="/"
-                className="hover:text-primary transition-colors flex items-center gap-1.5"
+                className="flex items-center gap-1 transition-colors hover:text-primary"
               >
                 <span className="material-symbols-outlined text-[16px]">
                   home
                 </span>
-                Beranda
+
+                <span>Beranda</span>
               </Link>
 
-              <span className="material-symbols-outlined text-[14px] text-outline-variant">
+              <span className="material-symbols-outlined text-[14px] text-outline">
                 chevron_right
               </span>
 
-              <span className="text-primary font-bold">
+              <Link
+                href="/produk"
+                className="transition-colors hover:text-primary"
+              >
                 Produk
-              </span>
+              </Link>
             </nav>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest shadow-sm">
+            {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest shadow-sm">
               <span className="material-symbols-outlined text-secondary text-[16px]">
                 verified
               </span>
@@ -90,7 +94,7 @@ export default function ProdukPage() {
               <span className="font-label-technical text-label-technical text-on-surface uppercase tracking-wider">
                 Lini Produk Resmi & Genuine Parts PT. KEI HAI
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -99,21 +103,21 @@ export default function ProdukPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="max-w-3xl flex flex-col gap-3">
 
-              <div className="inline-flex items-center gap-2">
+              {/* <div className="inline-flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-secondary" />
 
                 <span className="font-label-technical text-label-technical uppercase tracking-widest text-secondary font-bold">
                   // PORTAL KATALOG RESMI
                 </span>
-              </div>
+              </div> */}
 
               <h1 className="font-headline-lg text-headline-lg text-primary tracking-tight font-extrabold">
-                Produk Material Handling
+                Jelajahi Katalog Produk
               </h1>
 
               <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-                Pilih kategori produk yang Anda butuhkan untuk melihat katalog,
-                spesifikasi, dan pilihan produk yang tersedia dari PT. KEI HAI.
+                Gunakan kategori di bawah untuk masuk ke katalog produk yang
+                sesuai dengan kebutuhan operasional Anda.
               </p>
             </div>
           </div>
@@ -123,7 +127,7 @@ export default function ProdukPage() {
         <section className="w-full pb-16 lg:pb-24">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-            <div className="mb-8">
+            {/* <div className="mb-8">
               <span className="font-label-technical text-label-technical uppercase tracking-widest text-secondary font-bold">
                 PILIH KATEGORI PRODUK
               </span>
@@ -136,7 +140,7 @@ export default function ProdukPage() {
                 Gunakan kategori di bawah untuk masuk ke katalog produk yang
                 sesuai dengan kebutuhan operasional Anda.
               </p>
-            </div>
+            </div> */}
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
 
