@@ -8,6 +8,7 @@ import WhyChooseUsSection from "./components/sections/WhyChooseUsSection";
 import ArticlesSection from "./components/sections/ArticlesSection";
 import FinalCTASection from "./components/sections/FinalCTASection";
 import BatterySection from "./components/sections/BatterySection";
+import TopBannerSlider from "./components/sections/TopBannerSlider";
 
 import type { Metadata } from "next";
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function HomePage() {
   return (
    <main className="w-full pt-[116px] bg-background min-h-screen">
     <div className="flex flex-col w-full">
+      <TopBannerSlider />
       <Hero />
       <ClientTrustSection />
       <ServicesSection />
