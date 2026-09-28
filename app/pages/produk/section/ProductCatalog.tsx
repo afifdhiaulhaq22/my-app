@@ -12,7 +12,7 @@ const products = [
     name: "Seri FD50 HD Diesel",
     category: "diesel",
     capacity: 5000,
-    badge: "Heavy Payload",
+    badge: "Used",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuCc4bDBdI1tCWlf9eTSUMAeGEGn5dnEjABSlksv2BCpOCGq3JNYPNF4ReTcuqSw3zmdjdhfE3QYHjSlkPIvrVDAzHTGh6meQadN3RqGbJyZPAr9NUS5U0PEJjlrg19Rex6ldAqm1i0z8YX8yGobnuw5JyI6LOpGVKLyafzIjsBpP-yzNS9VNzcu6Ur9_jVkfuF3MhFFj4NhbkI3avpMx55HtG0LBZ7oVMlfRzi_o1uySAkG5U1xJWXS",
     location: "Ready MM2100",
