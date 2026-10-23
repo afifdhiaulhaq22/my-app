@@ -25,17 +25,6 @@ export default function ProductGallery({ product }) {
             {selectedImage.title}
           </span>
         </div>
-
-        {/* INFO BAWAH */}
-        <div className="absolute bottom-3 left-4 right-4 bg-primary-container/90 text-on-primary rounded-lg px-4 py-2 flex items-center justify-between shadow-sm">
-          <span className="font-label-technical tracking-wider uppercase">
-            KODE UNIT: {product.code}
-          </span>
-
-          <span className="font-label-technical tracking-wider uppercase font-bold">
-            TERSEDIA INSPEKSI LANGSUNG
-          </span>
-        </div>
       </div>
 
       {/* THUMBNAILS */}

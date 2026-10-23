@@ -1,38 +1,100 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
 
-const banners = [
-  {
-    image: 
-      "https://lh3.googleusercontent.com/aida/AEtjO1WcteIXrKgWnilIohEEGxfAAKjibZRwDrB1KwVbGLe7GKZu7R7G9Dv8bmRnqVTwXVA4laQUjjpHVCBq7BSLep17gk9AuihsxaSmo06OX0u8N9MYBGdi_MXiF1WCFL3a2za8pAN2wvxX6b7KpobzoCOv-Ns2WsiLknkyr4H6DN4zpqr8zvffAv2kzWXaOvO5Vag0o3s1fDEnK7y9nKs-ittSa6Ht-fZDNNWjbHEptVcTXnD4lQQlOSZm0w",
-    alt: "Forklift industri PT KEI HAI",
-  },
-  {
-    image: 
-      "https://lh3.googleusercontent.com/aida/AEtjO1VQry0B9MxNJX9UX2cl-qbyWSv18mgvVFOyiQf1f1bqMZWw4PMnFPcIyOqJ12wSqQXP4hZnG15PNZKERMXMs5JoUiioxuoPcXc32YFTS_fM-8WEasJRWW-3QTEuv642JQV8DkfaGXKA0N1PMJNqUSm6Qoq18f1Gyr6MegnXVLD3RSCAs9oQuvZfW77wdC54VpKySyvYt9PLnfiguUVRZLLQNHObwfxftOSTwC-506J8lD9X1GQYl2wFaLI",
-    alt: "Rental forklift PT KEI HAI",
-  },
-  {
-    image: 
-      "https://lh3.googleusercontent.com/aida/AEtjO1UooZNYT29Qz6O1bkT3JwPWL58M2QVeRjRv3jjI5upYORYbGrfU0Sbm6k_GnVL31n6msmSVVfUak5xfR2vQ0QC0-r7eMW9HpZoRF1o5M59q8kGeHBw1YHCRYpxSAx9ZabitwiLmVN0bweWdaVhasCa93BxcKm0NeqOiisrMj3gaX08jtCeyjk1XHdrTZ2CPd4Ng9PLgb9M2US5aExed0aWeNIKK6vsa5vAMTVE9tkEvRYBcfjKRx0OSBA",
-    alt: "Service forklift PT KEI HAI",
-  },
-];
+const PAYLOAD_URL ="http://localhost:3001";
+
+const BANNERS_API = `${PAYLOAD_URL}/api/banners?where[isActive][equals]=true&sort=order&depth=1&limit=100`;
+
+type PayloadImage = {
+  url?: string;
+  filename?: string;
+  alt?: string;
+};
+
+type Banner = {
+  id: string;
+  title: string;
+  image: string | PayloadImage;
+  alt: string;
+  description?: string;
+  order?: number;
+  isActive?: boolean;
+};
+
+type PayloadResponse = {
+  docs: Banner[];
+};
 
 export default function TopBannerSlider() {
+  const [banners, setBanners] = useState<Banner[]>([]);
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
+  // Mengambil banner dari Payload CMS
   useEffect(() => {
-    if (isPaused) return;
+    const controller = new AbortController();
+
+    async function fetchBanners() {
+      try {
+        setLoading(true);
+        setError(false);
+
+        const response = await fetch(BANNERS_API, {
+          signal: controller.signal,
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error("Gagal mengambil data banner dari Payload CMS");
+        }
+
+        const data: PayloadResponse = await response.json();
+
+        setBanners(
+          (data.docs || []).filter(
+            (banner) => banner.isActive !== false
+          )
+        );
+      } catch (err) {
+        if (err instanceof Error && err.name === "AbortError") {
+          return;
+        }
+
+        console.error("Gagal memuat banner:", err);
+        setError(true);
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    fetchBanners();
+
+    return () => controller.abort();
+  }, []);
+
+  // Reset indeks jika jumlah banner berubah
+  useEffect(() => {
+    if (current >= banners.length) {
+      setCurrent(0);
+    }
+  }, [banners.length, current]);
+
+  // Auto-slide setiap 5 detik
+  useEffect(() => {
+    if (isPaused || banners.length <= 1) return;
 
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % banners.length);
     }, 5000);
 
     return () => clearInterval(timer);
-  }, [isPaused]);
+  }, [isPaused, banners.length]);
 
   const nextSlide = () => {
     setCurrent((prev) => (prev + 1) % banners.length);
@@ -42,68 +104,131 @@ export default function TopBannerSlider() {
     setCurrent((prev) => (prev - 1 + banners.length) % banners.length);
   };
 
+  // Mengubah data upload Payload menjadi URL gambar lengkap
+  const getImageUrl = (image: string | PayloadImage) => {
+    const imageUrl = typeof image === "string" ? image : image?.url;
+
+    if (!imageUrl) return "";
+
+    if (imageUrl.startsWith("http://") || imageUrl.startsWith("https://")) {
+      return imageUrl;
+    }
+
+    return `${PAYLOAD_URL.replace(/\/$/, "")}/${imageUrl.replace(/^\//, "")}`;
+  };
+
+  if (loading) {
+    return (
+      <section className="flex h-[260px] items-center justify-center bg-[#0F2D59] text-white sm:h-[340px] md:h-[420px] lg:h-[480px]">
+        Memuat banner...
+      </section>
+    );
+  }
+
+  if (error || banners.length === 0) {
+    return (
+      <section className="flex h-[260px] items-center justify-center bg-[#0F2D59] px-4 text-center text-white sm:h-[340px] md:h-[420px] lg:h-[480px]">
+        {error
+          ? "Banner belum dapat dimuat."
+          : "Belum ada banner aktif."}
+      </section>
+    );
+  }
+
   return (
     <section
       className="relative w-full overflow-hidden bg-[#0F2D59]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Banner */}
       <div className="relative h-[260px] sm:h-[340px] md:h-[420px] lg:h-[480px]">
-        {banners.map((banner, index) => (
-          <div
-            key={banner.image}
-            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-              index === current
-                ? "opacity-100"
-                : "pointer-events-none opacity-0"
-            }`}
-          >
-            <img
-              src={banner.image}
-              alt={banner.alt}
-              className="h-full w-full object-cover"
-            />
-          </div>
-        ))}
+        {banners.map((banner, index) => {
+          const imageUrl = getImageUrl(banner.image);
 
-        {/* Previous Button */}
-        <button
-          type="button"
-          onClick={prevSlide}
-          aria-label="Banner sebelumnya"
-          className="absolute left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm transition-all duration-300 hover:bg-[#D92525] sm:left-6 md:left-8 md:h-12 md:w-12"
-        >
-          <span className="text-xl">←</span>
-        </button>
-
-        {/* Next Button */}
-        <button
-          type="button"
-          onClick={nextSlide}
-          aria-label="Banner berikutnya"
-          className="absolute right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm transition-all duration-300 hover:bg-[#D92525] sm:right-6 md:right-8 md:h-12 md:w-12"
-        >
-          <span className="text-xl">→</span>
-        </button>
-
-        {/* Pagination */}
-        <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2">
-          {banners.map((banner, index) => (
-            <button
-              key={banner.image}
-              type="button"
-              onClick={() => setCurrent(index)}
-              aria-label={`Buka banner ${index + 1}`}
-              aria-current={index === current}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
+          return (
+            <div
+              key={banner.id}
+              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
                 index === current
-                  ? "w-9 bg-[#D92525]"
-                  : "w-2.5 bg-white/60 hover:bg-white"
+                  ? "opacity-100"
+                  : "pointer-events-none opacity-0"
               }`}
-            />
-          ))}
-        </div>
+              aria-hidden={index !== current}
+            >
+              {imageUrl && (
+                <img
+                  src={imageUrl}
+                  alt={banner.alt || banner.title}
+                  className="h-full w-full object-cover"
+                  fetchPriority={index === 0 ? "high" : "auto"}
+                />
+              )}
+
+              {/* Overlay agar teks lebih mudah dibaca */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/15 to-transparent" />
+
+              {(banner.title || banner.description) && (
+                <div className="absolute inset-0 flex items-center">
+                  <div className="mx-auto w-full max-w-7xl px-6 text-white sm:px-10 lg:px-16">
+                    {banner.title && (
+                      <h2 className="max-w-2xl text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl">
+                        {banner.title}
+                      </h2>
+                    )}
+
+                    {banner.description && (
+                      <p className="mt-3 max-w-xl text-sm sm:text-base md:text-lg">
+                        {banner.description}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+
+        {/* Tombol sebelumnya */}
+        {banners.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={prevSlide}
+              aria-label="Banner sebelumnya"
+              className="absolute left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm transition-all duration-300 hover:bg-[#D92525] sm:left-6 md:left-8 md:h-12 md:w-12"
+            >
+              <span className="text-xl">←</span>
+            </button>
+
+            {/* Tombol berikutnya */}
+            <button
+              type="button"
+              onClick={nextSlide}
+              aria-label="Banner berikutnya"
+              className="absolute right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm transition-all duration-300 hover:bg-[#D92525] sm:right-6 md:right-8 md:h-12 md:w-12"
+            >
+              <span className="text-xl">→</span>
+            </button>
+
+            {/* Pagination */}
+            <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2">
+              {banners.map((banner, index) => (
+                <button
+                  key={banner.id}
+                  type="button"
+                  onClick={() => setCurrent(index)}
+                  aria-label={`Buka banner ${index + 1}`}
+                  aria-current={index === current ? "true" : undefined}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    index === current
+                      ? "w-9 bg-[#D92525]"
+                      : "w-2.5 bg-white/60 hover:bg-white"
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

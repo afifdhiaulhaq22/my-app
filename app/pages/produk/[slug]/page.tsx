@@ -221,17 +221,6 @@ export default async function ProductDetailPage({
             </nav>
 
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-lowest text-[#047857] font-label-technical uppercase tracking-wider shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-[#047857] animate-pulse" />
-                READY STOCK
-              </span>
-
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container-lowest text-on-primary-fixed-variant font-label-technical uppercase tracking-wider shadow-sm">
-                <span className="material-symbols-outlined text-[14px]">
-                  verified
-                </span>
-                100% GENUINE INDUSTRIAL UNIT
-              </span>
             </div>
           </div>
         </div>
@@ -247,17 +236,7 @@ export default async function ProductDetailPage({
               </div>
 
               {/* PRODUCT INFO */}
-              <div className="lg:col-span-5 flex flex-col gap-5">
-
-                <div className="flex items-center gap-2">
-                  <span className="font-label-technical tracking-wider text-on-surface-variant uppercase flex items-center gap-1 font-bold">
-                    <span className="material-symbols-outlined text-[16px] text-[#047857]">
-                      check_circle
-                    </span>
-                    MEREK: {product.brand}
-                  </span>
-                </div>
-
+              <div className="lg:col-span-5 flex flex-col gap-5"> 
                 <div className="space-y-2">
                   <h1 className="font-headline-lg text-headline-lg text-primary leading-tight font-extrabold">
                     {product.name}
@@ -305,39 +284,32 @@ export default async function ProductDetailPage({
                 </div>
 
                 {/* CTA */}
-                <div className="flex flex-col gap-2.5 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
                   <a
                     href="/pages/hubungi-kami"
-                    className="w-full bg-secondary hover:bg-secondary-container text-on-secondary px-6 py-3.5 rounded-lg font-label-lg flex items-center justify-center gap-2 shadow-md"
+                    className="w-full min-h-[56px] bg-secondary hover:bg-secondary-container text-on-secondary px-4 py-3.5 rounded-lg font-label-lg flex items-center justify-center gap-2 text-center shadow-md"
                   >
-                    <span className="material-symbols-outlined">
+                    <span className="material-symbols-outlined shrink-0">
                       request_quote
                     </span>
-                    Hubungi Kami / Minta Penawaran
+                    <span>Hubungi Kami / Minta Penawaran</span>
                   </a>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <a
-                      href="https://wa.me/628119208000"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full bg-[#047857] hover:bg-[#065f46] text-white px-4 py-3 rounded-lg font-label-lg flex items-center justify-center gap-2"
-                    >
-                      <span className="material-symbols-outlined">
-                        chat
-                      </span>
-                      Konsultasi WhatsApp
-                    </a>
-                  </div>
+                  <a
+                    href="https://wa.me/628119208000"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full min-h-[56px] bg-[#047857] hover:bg-[#065f46] text-white px-4 py-3.5 rounded-lg font-label-lg flex items-center justify-center gap-2 text-center"
+                  >
+                    <span className="material-symbols-outlined shrink-0">
+                      chat
+                    </span>
+                    <span>Konsultasi WhatsApp</span>
+                  </a>
                 </div>
 
                 {/* ASSURANCES */}
                 <div className="bg-surface-container-low rounded-lg p-4 space-y-2.5">
-                  <Assurance
-                    icon="local_shipping"
-                    text={`Unit Tersedia Siap Kirim (${product.location})`}
-                  />
-
                   <Assurance
                     icon="build_circle"
                     text="Layanan Teknisi & Suku Cadang Darurat 2x24 Jam Kerja"
@@ -353,53 +325,7 @@ export default async function ProductDetailPage({
           </div>
         </section>
 
-        {/* SPEC HIGHLIGHTS */}
-        <section className="w-full py-space-xl bg-surface-container-low">
-          <div className="max-w-7xl mx-auto px-6">
-
-            <div className="mb-8">
-              <span className="font-label-technical text-secondary uppercase tracking-widest font-bold">
-                HIGHLIGHT TEKNIS
-              </span>
-
-              <h2 className="font-headline-lg text-primary font-bold">
-                Spesifikasi Umum
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
-              <SpecCard
-                label="Kapasitas Angkat"
-                value={product.capacity}
-                description={`(${product.capacityLabel})`}
-              />
-
-              <SpecCard
-                label="Tipe Bahan Bakar"
-                value={product.fuel}
-                description="Industrial Grade Engine"
-              />
-
-              <SpecCard
-                label="Tinggi Angkat Maks"
-                value={product.mastHeight}
-                description="Jangkauan Angkat"
-              />
-
-              <SpecCard
-                label="Jenis Tiang / Mast"
-                value={product.mast}
-                description="Full Free Lift Mast"
-              />
-
-              <SpecCard
-                label="Garansi"
-                value={product.warranty}
-                description="Garansi Pabrikan"
-              />
-            </div>
-          </div>
-        </section>
+       
 
         {/* KEUNGGULAN */}
         <section className="w-full py-space-xl">
@@ -454,43 +380,7 @@ export default async function ProductDetailPage({
           </div>
         </section>
 
-        {/* DATASHEET */}
-        <section
-          id="tabel-detail"
-          className="w-full py-space-xl bg-surface-container-low"
-        >
-          <div className="max-w-7xl mx-auto px-6">
-
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-              <div>
-                <span className="font-label-technical text-secondary uppercase tracking-widest font-bold">
-                  TECHNICAL DATASHEET
-                </span>
-
-                <h2 className="font-headline-lg text-primary font-bold">
-                  Spesifikasi Detail
-                </h2>
-
-                <p className="font-body-md text-on-surface-variant max-w-2xl mt-1">
-                  Tabel spesifikasi teknis lengkap {product.name}.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {Object.entries(product.specifications).map(
-                ([category, rows], index) => (
-                  <SpecTable
-                    key={category}
-                    category={category}
-                    rows={rows}
-                    index={index + 1}
-                  />
-                )
-              )}
-            </div>
-          </div>
-        </section>
+        
 
         <ProductSection />
         <FinalCTASection />

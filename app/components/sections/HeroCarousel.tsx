@@ -1,53 +1,145 @@
+
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const slides = [
-  {
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC-XjHs9mBTGDc0ULhNed7axcn1inf1-_l302YJREbMk6m57uKoBu4mAMCRPwp-aIV_Xbjau9JCRkYFuwfimFoM8VJzys1etPzjWSmin3sc15slaTbt5FljR1aubnEgQZa7U5nsyIjPVdH5VU_eYAkT4-YuUik_GTd4NPNvuLvfXm89EWR5AqKjK6H-JmBjX7XOD9lFaa5O2DiTHMtjGphLeu1FmEGNomKK6NFw3HCwNwXbG90JmhEE",
-    alt: "Forklift Heavy Duty Operasional Pergudangan Industri Logistik Modern PT KEI HAI",
-    icon: "workspace_premium",
-    title: "Standar Keselamatan K3",
-    description:
-      "Unit Bergaransi Resmi & Lulus Sertifikasi Uji Depnaker",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1586528116493-da8b7f4a8a34?auto=format&fit=crop&w=1200&q=80",
-    alt: "Operasional forklift di gudang industri",
-    icon: "engineering",
-    title: "Teknisi Profesional",
-    description:
-      "Didukung teknisi berpengalaman untuk menjaga performa unit Anda.",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1565610222536-ef125c59da2e?auto=format&fit=crop&w=1200&q=80",
-    alt: "Forklift dan material handling equipment",
-    icon: "local_shipping",
-    title: "Armada Siap Pakai",
-    description:
-      "Pilihan unit forklift untuk berbagai kebutuhan operasional industri.",
-  },
-];
+const PAYLOAD_URL = "http://localhost:3001";
+const BANNERS_API = `${PAYLOAD_URL}/api/banners`;
+
+type HeroSlide = {
+  id: string | number;
+  image: string | null;
+  alt: string;
+  icon: string;
+  title: string;
+  description: string;
+};
+
+type PayloadImage = {
+  url?: string | null;
+  alt?: string | null;
+};
+
+type PayloadBanner = {
+  id: string | number;
+  image?: string | number | PayloadImage | null;
+  alt?: string | null;
+  icon?: string | null;
+  title?: string | null;
+  description?: string | null;
+};
+
+type PayloadResponse = {
+  docs: PayloadBanner[];
+};
 
 export default function HeroCarousel() {
+  const [slides, setSlides] = useState<HeroSlide[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  const activeSlide = slides[activeIndex];
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function fetchBanners() {
+      try {
+        const response = await fetch(
+          `${BANNERS_API}?where[isActive][equals]=true&sort=order&limit=20&depth=1`,
+          {
+            signal: controller.signal,
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `Gagal mengambil banner: ${response.status}`
+          );
+        }
+
+        const result: PayloadResponse = await response.json();
+
+        const bannerData: HeroSlide[] = result.docs
+          .map((banner) => {
+            const image =
+              typeof banner.image === "object" &&
+              banner.image !== null
+                ? banner.image.url
+                : null;
+
+            const imageUrl = image
+              ? image.startsWith("http")
+                ? image
+                : `${PAYLOAD_URL.replace(/\/$/, "")}${image.startsWith("/") ? "" : "/"}${image}`
+              : null;
+
+            return {
+              id: banner.id,
+              image: imageUrl,
+              alt:
+                banner.alt ||
+                (typeof banner.image === "object" &&
+                banner.image !== null
+                  ? banner.image.alt || ""
+                  : ""),
+              icon: banner.icon || "image",
+              title: banner.title || "",
+              description: banner.description || "",
+            };
+          })
+          .filter(
+            (slide) => slide.image && slide.title
+          );
+
+        setSlides(bannerData);
+        setActiveIndex(0);
+      } catch (err) {
+        if (
+          err instanceof Error &&
+          err.name === "AbortError"
+        ) {
+          return;
+        }
+
+        console.error("Gagal memuat banner:", err);
+        setError(true);
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    fetchBanners();
+
+    return () => controller.abort();
+  }, []);
 
   const nextSlide = () => {
     setActiveIndex((current) =>
-      current === slides.length - 1 ? 0 : current + 1
+      current >= slides.length - 1 ? 0 : current + 1
     );
   };
 
   const previousSlide = () => {
     setActiveIndex((current) =>
-      current === 0 ? slides.length - 1 : current - 1
+      current <= 0 ? slides.length - 1 : current - 1
     );
   };
+
+  if (loading) {
+    return (
+      <div className="relative lg:col-span-5">
+        <div className="h-[480px] animate-pulse rounded-2xl bg-surface-container" />
+      </div>
+    );
+  }
+
+  if (error || slides.length === 0) {
+    return null;
+  }
+
+  const activeSlide = slides[activeIndex];
 
   return (
     <div className="relative lg:col-span-5">
@@ -56,18 +148,18 @@ export default function HeroCarousel() {
         <div className="relative h-[480px] w-full">
           {slides.map((slide, index) => (
             <img
-              key={slide.image}
-              src={slide.image}
+              key={slide.id}
+              src={slide.image!}
               alt={slide.alt}
               className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-in-out ${
                 index === activeIndex
                   ? "scale-100 opacity-100"
-                  : "scale-105 opacity-0"
+                  : "pointer-events-none scale-105 opacity-0"
               }`}
             />
           ))}
 
-          {/* Gradient Scrim */}
+          {/* Gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
         </div>
 
@@ -97,11 +189,11 @@ export default function HeroCarousel() {
 
         {/* Floating Badge */}
         <div className="absolute bottom-6 left-6 right-6 flex items-center gap-3 rounded-xl bg-surface-container-lowest/95 p-4 shadow-lg backdrop-blur-md">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+          {/* <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
             <span className="material-symbols-outlined text-[22px]">
               {activeSlide.icon}
             </span>
-          </div>
+          </div> */}
 
           <div className="min-w-0">
             <p className="truncate font-title-md text-title-md leading-tight text-primary">
@@ -115,10 +207,10 @@ export default function HeroCarousel() {
         </div>
 
         {/* Dots */}
-        <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 translate-y-0 gap-1.5">
+        <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
           {slides.map((slide, index) => (
             <button
-              key={slide.title}
+              key={slide.id}
               type="button"
               onClick={() => setActiveIndex(index)}
               aria-label={`Ke slide ${index + 1}`}

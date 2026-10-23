@@ -24,7 +24,7 @@ const NAVBAR_DATA = {
   },
 
   brand: {
-    logo: "https://lh3.googleusercontent.com/aida/AEtj...",
+    logo: "/logokeihai.png",
     logoAlt: "PT. KEI HAI Corporate Logo",
     name: "PT. KEI HAI",
     tagline: "Forklift & Material Handling",
@@ -227,13 +227,12 @@ function Brand() {
       href="/"
       className="flex min-w-0 items-center gap-space-md"
     >
-      {/* Jika ingin menggunakan logo:
       <img
         src={brand.logo}
         alt={brand.logoAlt}
         className="h-8 w-auto object-contain"
       />
-      */}
+     
 
       <div className="flex min-w-0 flex-col">
         <span className="font-headline-sm text-headline-sm leading-tight tracking-tight text-primary">

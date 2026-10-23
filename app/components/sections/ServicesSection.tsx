@@ -1,14 +1,13 @@
 import Link from "next/link";
 
+
 const services = [
   {
     title: "Jual Unit Forklift",
     description:
       "Berbagai pilihan unit forklift diesel, elektrik, dan LPG untuk mendukung operasional industri berat.",
-    badge: "KAPASITAS 1.5 - 25 TON",
-    path: "/produk/unit-forklift",
-    image:
-      "https://lh3.googleusercontent.com/aida/AEtjO1WcteIXrKgWnilIohEEGxfAAKjibZRwDrB1KwVbGLe7GKZu7R7G9Dv8bmRnqVTwXVA4laQUjjpHVCBq7BSLep17gk9AuihsxaSmo06OX0u8N9MYBGdi_MXiF1WCFL3a2za8pAN2wvxX6b7KpobzoCOv-Ns2WsiLknkyr4H6DN4zpqr8zvffAv2kzWXaOvO5Vag0o3s1fDEnK7y9nKs-ittSa6Ht-fZDNNWjbHEptVcTXnD4lQQlOSZm0w",
+    path: "/pages/produk",
+    image:"/service1.png",
     alt: "Jual Unit Forklift Modern PT KEI HAI",
     icon: "forklift",
   },
@@ -16,10 +15,8 @@ const services = [
     title: "Sewa Unit Forklift",
     description:
       "Solusi sewa harian, bulanan, dan tahunan fleksibel dengan armada backup siaga 24 jam.",
-    badge: "KONTRAK FLEKSIBEL",
-    path: "/layanan/sewa-unit",
-    image:
-      "https://lh3.googleusercontent.com/aida/AEtjO1VQry0B9MxNJX9UX2cl-qbyWSv18mgvVFOyiQf1f1bqMZWw4PMnFPcIyOqJ12wSqQXP4hZnG15PNZKERMXMs5JoUiioxuoPcXc32YFTS_fM-8WEasJRWW-3QTEuv642JQV8DkfaGXKA0N1PMJNqUSm6Qoq18f1Gyr6MegnXVLD3RSCAs9oQuvZfW77wdC54VpKySyvYt9PLnfiguUVRZLLQNHObwfxftOSTwC-506J8lD9X1GQYl2wFaLI",
+    path: "/pages/sewa-forklift",
+    image:"/service1.png",
     alt: "Sewa Unit Forklift Pergudangan Logistik PT KEI HAI",
     icon: "rental",
   },
@@ -27,10 +24,8 @@ const services = [
     title: "Servis dan Lubrikasi",
     description:
       "Layanan preventive maintenance, overhaul, dan oli industri standar berat bersertifikasi K3.",
-    badge: "GARANSI SERVIS",
-    path: "/layanan/servis-dan-lubrikasi",
-    image:
-      "https://lh3.googleusercontent.com/aida/AEtjO1UooZNYT29Qz6O1bkT3JwPWL58M2QVeRjRv3jjI5upYORYbGrfU0Sbm6k_GnVL31n6msmSVVfUak5xfR2vQ0QC0-r7eMW9HpZoRF1o5M59q8kGeHBw1YHCRYpxSAx9ZabitwiLmVN0bweWdaVhasCa93BxcKm0NeqOiisrMj3gaX08jtCeyjk1XHdrTZ2CPd4Ng9PLgb9M2US5aExed0aWeNIKK6vsa5vAMTVE9tkEvRYBcfjKRx0OSBA",
+    path: "/pages/servis-lubrikasi",
+    image:"/service1.png",
     alt: "Teknisi Melakukan Servis dan Lubrikasi Forklift PT KEI HAI",
     icon: "service",
   },
@@ -38,10 +33,8 @@ const services = [
     title: "Suku Cadang",
     description:
       "Suku cadang 100% original bergaransi resmi untuk memastikan operasional mesin tanpa henti.",
-    badge: "OEM GENUINE PARTS",
-    path: "/produk/suku-cadang",
-    image:
-      "https://lh3.googleusercontent.com/aida/AEtjO1ULCntxBuF3mY8iXJNxvAM5uqfEOEMjrU31fHSNy0DxuxddsjFrtw8rnBQLuDbFWqWmb_nPLLw-OPuVO88l3RryN7ULN4mRpL1sEcOag82HvNdOAV2rEr2abHdW5zPhN3xMW75d27QeShoAh9RK3yaNmtJipgzQRyMVg5mzb0VMfdaFI37UhVKJEMDIj6oN8d_Tg58-8h-YPzf6t29zPauM8DIGBGghbBCDPZieHh6ADM0c7vNIOi7Now",
+    path: "/pages/suku-cadang",
+    image:"/service1.png",
     alt: "Suku Cadang Asli OEM Forklift PT KEI HAI",
     icon: "parts",
   },
@@ -206,11 +199,6 @@ export default function ServicesSection() {
                 <div className="w-12 h-12 shrink-0 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-sm">
                   <ServiceIcon type={service.icon} />
                 </div>
-
-                {/* Badge */}
-                {/* <span className="px-2.5 py-1 rounded bg-[#D92525] text-white text-[10px] font-bold uppercase tracking-wider shadow-sm text-right">
-                  {service.badge}
-                </span> */}
               </div>
 
               {/* Bottom Content */}
