@@ -1,19 +1,18 @@
-
 const PAYLOAD_URL = (
-  process.env.NEXT_PUBLIC_PAYLOAD_URL || 'http://localhost:3001'
-).replace(/\/$/, '')
+  process.env.NEXT_PUBLIC_PAYLOAD_URL || "http://localhost:3001"
+).replace(/\/+$/, "");
 
 export type DataPerusahaan = {
-  nomorPerusahaan?: string
-  nomorSalesWA?: string
-  email?: string
-  alamat?: string
+  nomorPerusahaan?: string;
+  nomorSalesWA?: string;
+  email?: string;
+  alamat?: string;
   koordinat?: {
-    latitude?: string
-    longitude?: string
-  }
-  linkGoogleMaps?: string
-}
+    latitude?: string;
+    longitude?: string;
+  };
+  linkGoogleMaps?: string;
+};
 
 export async function getDataPerusahaan(): Promise<DataPerusahaan | null> {
   try {
@@ -22,15 +21,15 @@ export async function getDataPerusahaan(): Promise<DataPerusahaan | null> {
       {
         next: { revalidate: 300 },
       },
-    )
+    );
 
     if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`)
+      throw new Error(`HTTP ${response.status}`);
     }
 
-    return (await response.json()) as DataPerusahaan
+    return (await response.json()) as DataPerusahaan;
   } catch (error) {
-    console.error('Gagal mengambil data perusahaan:', error)
-    return null
+    console.error("Gagal mengambil data perusahaan:", error);
+    return null;
   }
 }
