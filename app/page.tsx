@@ -1,14 +1,15 @@
-import Hero from "./components/sections/Hero";
+import Hero from "./home-components/home-sections/Hero";
 
-import ClientTrustSection from "./components/sections/ClientTrustSection";
-import ServicesSection from "./components/sections/ServicesSection";
-import ProductSection from "./components/sections/ProductSection";
-import SolutionsSection from "./components/sections/SolutionsSection";
-import WhyChooseUsSection from "./components/sections/WhyChooseUsSection";
-import ArticlesSection from "./components/sections/ArticlesSection";
-import FinalCTASection from "./components/sections/FinalCTASection";
-import BatterySection from "./components/sections/BatterySection";
-import TopBannerSlider from "./components/sections/TopBannerSlider";
+import ClientTrustSection from "./home-components/home-sections/ClientTrustSection";
+import ServicesSection from "./home-components/home-sections/ServicesSection";
+import ProductSection from "./pages/produk/unit-forklift/ForkliftListSection";
+import SolutionsSection from "./home-components/home-sections/SolutionsSection";
+import WhyChooseUsSection from "./home-components/home-sections/WhyChooseUsSection";
+import ArticlesSection from "./home-components/home-sections/ArticlesSection";
+import FinalCTASection from "./home-components/home-sections/FinalCTASection";
+import BatterySection from "./pages/produk/baterai/component/BatteryListSection";
+import TopBannerSlider from "./home-components/home-sections/TopBannerSlider";
+import PartnerSection from "./home-components/home-sections/partner"
 
 import type { Metadata } from "next";
 export const metadata: Metadata = {
@@ -26,8 +27,9 @@ export default function HomePage() {
       <ServicesSection />
       <ProductSection />
       <BatterySection />
-      <SolutionsSection />
+      {/* <SolutionsSection /> */}
       <WhyChooseUsSection />
+      <PartnerSection />
       <ArticlesSection />
       <FinalCTASection />
    </div>
